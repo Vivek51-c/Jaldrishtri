@@ -1,0 +1,24 @@
+crop_name_raw,crop_name,category,notes
+Punjab Kharif Rice,Rice,Cereal,MNCFC raw dataset title
+Rice,Rice,Cereal,Canonical English common name
+Paddy,Rice,Cereal,Indian agricultural alias
+Kharif Rice,Rice,Cereal,Seasonal alias
+Dhan,Rice,Cereal,Hindi/Vernacular alias
+Punjab Rabi Wheat,Wheat,Cereal,MNCFC raw dataset title
+Wheat,Wheat,Cereal,Canonical English common name
+Rabi Wheat,Wheat,Cereal,Seasonal alias
+Gehun,Wheat,Cereal,Hindi/Vernacular alias
+Maize,Maize,Coarse Cereal,Canonical English common name
+Corn,Maize,Coarse Cereal,Common global alias
+Makka,Maize,Coarse Cereal,Hindi/Vernacular alias
+Kharif Maize,Maize,Coarse Cereal,Seasonal alias
+Cotton,Cotton,Fiber / Cash Crop,Canonical English common name
+Kapas,Cotton,Fiber / Cash Crop,Hindi/Vernacular alias
+Kharif Cotton,Cotton,Fiber / Cash Crop,Seasonal alias
+Millet,Millet,Nutri-Cereal,Canonical umbrella category
+Bajra,Millet,Nutri-Cereal,Pearl Millet (Pennisetum glaucum)
+Pearl Millet,Millet,Nutri-Cereal,Specific species alias
+Jowar,Millet,Nutri-Cereal,Sorghum (Sorghum bicolor)
+Sorghum,Millet,Nutri-Cereal,Specific species alias
+Ragi,Millet,Nutri-Cereal,Finger Millet (Eleusine coracana)
+Finger Millet,Millet,Nutri-Cereal,Specific species alias

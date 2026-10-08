@@ -1,0 +1,87 @@
+{
+  "timestamp": "2026-10-06T14:50:14.233904",
+  "pipeline_status": "PRODUCTION_GUARDRAILS_AUDIT_COMPLETED",
+  "database_modified": false,
+  "forecasts_in_supabase": 0,
+  "summary": {
+    "out_of_historical_range_forecasts_total": 316,
+    "out_of_range_legitimate_extrapolations": 142,
+    "out_of_range_suspicious_cases": 174,
+    "rogue_spike_blocks_total": 73,
+    "rogue_blocks_active_forecasted": 69,
+    "rogue_blocks_inactive_unforecasted": 4,
+    "rogue_blocks_legitimate_hydrological": 30,
+    "rogue_blocks_suspicious_cases": 43,
+    "unified_flagged_cases_total": 592,
+    "unified_legitimate_extrapolations": 262,
+    "unified_suspicious_cases": 330
+  },
+  "out_of_range_audit": {
+    "total": 316,
+    "unique_blocks": 191,
+    "direction_breakdown": {
+      "above_historical_max": 268,
+      "below_historical_min": 48
+    },
+    "deviation_distribution_meters": {
+      "min": 0.0,
+      "p25": 0.15,
+      "median": 0.345,
+      "p75": 0.8725,
+      "max": 10.13,
+      "mean": 0.9222151898734176
+    },
+    "by_classification": {
+      "legitimate_hydrological_extrapolation": {
+        "count": 142,
+        "mean_deviation_meters": 0.7499295774647888,
+        "median_deviation_meters": 0.35,
+        "mean_history_count": 67.42957746478874,
+        "rationale": "Well-monitored blocks (history >= 10, mean 67) continuing secular depletion or seasonal pre-monsoon drawdown with small bounded deviation (median 0.35m, max 2.99m) and smooth trajectory."
+      },
+      "suspicious_insufficient_data_case": {
+        "count": 174,
+        "mean_deviation_meters": 1.062816091954023,
+        "median_deviation_meters": 0.34,
+        "sparse_history_count_le9": 153,
+        "rogue_spike_overlap": 4,
+        "excessive_deviation_gt_3m": 23,
+        "rationale": "Blocks where historical bounds are artifacts of sparse history (<10 obs), contaminated by rogue spikes, or exhibiting excessive deviation (>3m) or erratic recursive steps (>5m)."
+      }
+    },
+    "by_season": {
+      "pre_monsoon": 148,
+      "august": 59,
+      "post_monsoon": 55,
+      "january": 54
+    },
+    "by_horizon": {
+      "1": 130,
+      "3": 70,
+      "2": 59,
+      "4": 57
+    },
+    "by_model": {
+      "xgboost_fallback_robust_exp02": 169,
+      "xgboost_primary_exp01": 147
+    }
+  },
+  "rogue_spike_audit": {
+    "total_blocks": 73,
+    "single_well_spikes": 59,
+    "multi_well_spikes": 14,
+    "by_spike_type": {
+      "healed_historical_glitch": 26,
+      "historical_glitch_with_instability": 24,
+      "recent_spike_state_distortion": 15,
+      "deep_arid_aquifer": 4,
+      "inactive_rogue_block": 4
+    },
+    "by_classification": {
+      "suspicious/insufficient-data case": 43,
+      "legitimate hydrological extrapolation": 30
+    },
+    "active_forecasted_blocks": 69,
+    "inactive_blocks": 4
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-10-06T13:29:19.439978+00:00",
+  "status": "PRODUCTION_INSERTION_SUCCESS",
+  "methodology_disclaimer": "Robust enough to proceed to production integration, with thresholds treated as engineered decision rules rather than scientifically validated ground-truth labels.",
+  "database_target": {
+    "project_id": "zkowsgnklqnulzyszzpy",
+    "table": "risk_zones"
+  },
+  "insertion_summary": {
+    "source_file": "data/processed/risk_candidates.csv",
+    "rows_attempted": 5405,
+    "rows_successfully_inserted": 5405,
+    "batches_used": 6,
+    "batch_size": 1000,
+    "retry_count": 0,
+    "elapsed_seconds": 9.25
+  },
+  "final_risk_distribution": {
+    "safe": 3267,
+    "watch": 1710,
+    "critical": 428,
+    "total": 5405
+  },
+  "validation_invariants": {
+    "total_rows_valid": true,
+    "safe_count_valid": true,
+    "watch_count_valid": true,
+    "critical_count_valid": true,
+    "duplicate_keys_count": 0,
+    "missing_required_fields": 0,
+    "csv_database_mismatch_count": 0,
+    "excluded_rows_accidentally_inserted": 0,
+    "source_tables_untouched": {
+      "wells": true,
+      "forecasts": true
+    }
+  },
+  "batch_details": [
+    {
+      "status": "Already successfully inserted in previous run"
+    }
+  ]
+}

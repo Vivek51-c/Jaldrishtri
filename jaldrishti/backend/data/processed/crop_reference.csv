@@ -1,0 +1,6 @@
+crop_name,water_requirement_mm,water_requirement_min_mm,water_requirement_max_mm,water_demand_category,season,crop_duration_days,critical_stages,source
+Rice,1250,1200,1500,HIGH,Kharif,135,"Panicle initiation, Flowering, Milk stage",ICAR Handbook of Agriculture / CGWB Irrigation Norms
+Wheat,550,450,650,MODERATE,Rabi,130,"Crown root initiation (CRI), Tillering, Flowering, Grain filling",ICAR-IIWBR / CGWB Irrigation Norms
+Maize,500,450,600,MODERATE,Kharif,100,"Tasseling, Silking, Early grain formation",ICAR-IIMR / CGWB Irrigation Norms
+Cotton,850,700,1000,HIGH,Kharif,165,"Square formation, Flowering, Boll development",ICAR-CICR / CGWB Irrigation Norms
+Millet,350,250,450,LOW,Kharif,80,"Flowering, Grain development",ICAR-IIMR / CGWB Irrigation Norms

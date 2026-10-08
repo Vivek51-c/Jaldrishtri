@@ -1,0 +1,156 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-10-07",
+  "description": "Deterministic rule-based agronomic and irrigation advisory decision matrix for JalDrishti",
+  "thresholds": {
+    "groundwater_depth_mbgl": {
+      "shallow_depth_max": 5.0,
+      "moderate_depth_max": 15.0,
+      "deep_depth_threshold": 20.0,
+      "severe_depth_threshold": 40.0
+    },
+    "groundwater_trend_m_per_year": {
+      "recharging_or_stable": 0.0,
+      "moderate_depletion": 0.2,
+      "severe_depletion": 0.5
+    },
+    "canal_infrastructure": {
+      "direct_presence_min_length_km": 1.0,
+      "high_density_threshold_km_per_km2": 0.3,
+      "proximate_distance_threshold_km": 5.0,
+      "distant_threshold_km": 20.0
+    },
+    "crop_water_demand_mm": {
+      "low_max": 450,
+      "moderate_max": 750,
+      "high_min": 751
+    }
+  },
+  "suitability_matrix": [
+    {
+      "id": "RULE_CRITICAL_HIGH",
+      "groundwater_risk": "CRITICAL",
+      "water_demand_category": "HIGH",
+      "crop_suitability": "STRONGLY_DISCOURAGED",
+      "severity": "CRITICAL_ALERT",
+      "irrigation_advice": "High water-demand crops will accelerate aquifer exhaustion under critical overdraft. Strongly advise shifting to low-water alternatives (e.g., Millets, Pulses, or short-duration Oilseeds). If cultivation is unavoidable, direct-seeded rice (DSR) or alternate wetting and drying (AWD) must be strictly implemented.",
+      "alternative_crops": [
+        "Millet",
+        "Maize"
+      ],
+      "canal_context_template": {
+        "present": "Canal infrastructure is present within this block ({canal_length_km:.1f} km, density {canal_density_km_per_km2:.2f} km/km2). Surface water supplies must be utilized where available to eliminate tubewell pumping.",
+        "absent": "No canal infrastructure is present within this block (nearest canal is {nearest_canal_distance_km:.1f} km away). Total reliance on deep tubewell pumping poses high hydrological and economic risk."
+      }
+    },
+    {
+      "id": "RULE_CRITICAL_MODERATE",
+      "groundwater_risk": "CRITICAL",
+      "water_demand_category": "MODERATE",
+      "crop_suitability": "RESTRICTED_WITH_EFFICIENT_IRRIGATION",
+      "severity": "CAUTION",
+      "irrigation_advice": "Moderate water demand crop under critical groundwater stress. Avoid flood irrigation. Restrict irrigations strictly to critical physiological stages (e.g. CRI and grain formation in wheat; silking in maize). Employ laser land leveling and mulching to suppress evaporative loss.",
+      "alternative_crops": [
+        "Millet"
+      ],
+      "canal_context_template": {
+        "present": "Canal infrastructure is present within this block ({canal_length_km:.1f} km). Coordinate irrigation turns with canal release schedules where operational.",
+        "absent": "Canal infrastructure is not available within this block ({nearest_canal_distance_km:.1f} km away). Strict deficit irrigation and micro-irrigation systems (drip/sprinkler) are recommended."
+      }
+    },
+    {
+      "id": "RULE_CRITICAL_LOW",
+      "groundwater_risk": "CRITICAL",
+      "water_demand_category": "LOW",
+      "crop_suitability": "HIGHLY_RECOMMENDED",
+      "severity": "FAVORABLE",
+      "irrigation_advice": "Ideal crop choice for this water-stressed block. Low water-demand crops require minimal irrigation and conserve vulnerable groundwater reserves while sustaining economic yield.",
+      "alternative_crops": [],
+      "canal_context_template": {
+        "present": "Canal infrastructure is present within this block ({canal_length_km:.1f} km), providing protective irrigation options during prolonged dry spells.",
+        "absent": "Canal infrastructure is absent in this block ({nearest_canal_distance_km:.1f} km away). This drought-resilient crop can be supported largely by natural soil moisture and protective rainfall."
+      }
+    },
+    {
+      "id": "RULE_WATCH_HIGH",
+      "groundwater_risk": "WATCH",
+      "water_demand_category": "HIGH",
+      "crop_suitability": "CAUTION_REQUIRED",
+      "severity": "WARNING",
+      "irrigation_advice": "Block is exhibiting emerging groundwater depletion or high baseline vulnerability. Continuous monitoring is required. Avoid excessive standing water and adopt precision water management.",
+      "alternative_crops": [
+        "Maize",
+        "Millet"
+      ],
+      "canal_context_template": {
+        "present": "Canal infrastructure is present within this block ({canal_length_km:.1f} km). Conjunctive use of surface and groundwater is recommended to mitigate aquifer drawdown.",
+        "absent": "Canal infrastructure is not present within this block ({nearest_canal_distance_km:.1f} km away). Ground extraction should be scheduled strictly according to soil moisture tensiometer thresholds."
+      }
+    },
+    {
+      "id": "RULE_WATCH_MODERATE",
+      "groundwater_risk": "WATCH",
+      "water_demand_category": "MODERATE",
+      "crop_suitability": "SUITABLE_WITH_MONITORING",
+      "severity": "NORMAL",
+      "irrigation_advice": "Crop is suitable for cultivation under standard management. Maintain scheduled irrigations and avoid over-watering during vegetative stages.",
+      "alternative_crops": [],
+      "canal_context_template": {
+        "present": "Canal infrastructure is present within this block ({canal_length_km:.1f} km), enhancing water resilience.",
+        "absent": "Canal infrastructure is absent in this block ({nearest_canal_distance_km:.1f} km away). Rely on efficient tubewell irrigation scheduling."
+      }
+    },
+    {
+      "id": "RULE_WATCH_LOW",
+      "groundwater_risk": "WATCH",
+      "water_demand_category": "LOW",
+      "crop_suitability": "HIGHLY_SUITABLE",
+      "severity": "FAVORABLE",
+      "irrigation_advice": "Highly suitable. Cultivating low water-demand crops prevents this WATCH block from transitioning into CRITICAL overdraft.",
+      "alternative_crops": [],
+      "canal_context_template": {
+        "present": "Canal infrastructure is present within this block ({canal_length_km:.1f} km).",
+        "absent": "Canal infrastructure is absent in this block ({nearest_canal_distance_km:.1f} km away)."
+      }
+    },
+    {
+      "id": "RULE_SAFE_HIGH",
+      "groundwater_risk": "SAFE",
+      "water_demand_category": "HIGH",
+      "crop_suitability": "SUITABLE",
+      "severity": "NORMAL",
+      "irrigation_advice": "Groundwater conditions are stable / recharging. High-demand crop cultivation is agronomically viable. Practice water conservation to sustain safe water table levels over the forward horizons.",
+      "alternative_crops": [],
+      "canal_context_template": {
+        "present": "Canal infrastructure is present within this block ({canal_length_km:.1f} km). Maintain conjunctive use to prevent waterlogging.",
+        "absent": "Canal infrastructure is absent in this block ({nearest_canal_distance_km:.1f} km away). Aquifer storage is adequate for standard irrigation requirements."
+      }
+    },
+    {
+      "id": "RULE_SAFE_MODERATE",
+      "groundwater_risk": "SAFE",
+      "water_demand_category": "MODERATE",
+      "crop_suitability": "SUITABLE",
+      "severity": "NORMAL",
+      "irrigation_advice": "Groundwater reserves are stable. Standard irrigation practices recommended.",
+      "alternative_crops": [],
+      "canal_context_template": {
+        "present": "Canal infrastructure is present within this block ({canal_length_km:.1f} km).",
+        "absent": "Canal infrastructure is absent in this block ({nearest_canal_distance_km:.1f} km away)."
+      }
+    },
+    {
+      "id": "RULE_SAFE_LOW",
+      "groundwater_risk": "SAFE",
+      "water_demand_category": "LOW",
+      "crop_suitability": "SUITABLE",
+      "severity": "NORMAL",
+      "irrigation_advice": "Fully suitable. Crop can be grown with minimal water expenditure.",
+      "alternative_crops": [],
+      "canal_context_template": {
+        "present": "Canal infrastructure is present within this block ({canal_length_km:.1f} km).",
+        "absent": "Canal infrastructure is absent in this block ({nearest_canal_distance_km:.1f} km away)."
+      }
+    }
+  ]
+}

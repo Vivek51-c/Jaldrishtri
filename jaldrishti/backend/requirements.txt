@@ -1,0 +1,11 @@
+# JalDrishti Backend Dependencies
+# FastAPI framework and ASGI web server for local development & API serving
+
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+httpx>=0.28.0
+pytest>=8.0.0
+xgboost>=3.4.0
+numpy>=2.0.0
