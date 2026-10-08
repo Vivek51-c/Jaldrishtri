@@ -2,7 +2,7 @@
  * apiClient.js
  * ============
  * Native fetch API client for the JalDrishti backend service.
- * Backend Base URL: http://127.0.0.1:8000
+ * Backend base URL is configured through VITE_API_BASE_URL.
  *
  * Provides typed methods for all production backend endpoints:
  * - getHealth()
@@ -27,13 +27,19 @@ import {
   STATES_DATA,
   CROPS_METADATA,
 } from "../data/mockData";
+import { API_BASE_URL } from "./config";
 
-export const BASE_URL = "http://127.0.0.1:8000";
+export const BASE_URL = API_BASE_URL;
 
 /**
  * Helper to perform native fetch requests with timeout and error handling.
  */
 async function request(path, options = {}) {
+  if (!BASE_URL) {
+    throw new Error(
+      "VITE_API_BASE_URL is not configured. Set it to the deployed FastAPI backend URL."
+    );
+  }
   const url = `${BASE_URL}${path}`;
   const response = await fetch(url, {
     headers: {
